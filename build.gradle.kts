@@ -2,7 +2,7 @@ plugins {
     `java-library`
 }
 
-group = "github.phateio.preloginevent"
+group = "io.github.phateio"
 version = "1.0"
 
 java {

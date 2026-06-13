@@ -1,6 +1,7 @@
 name: ${name}
 version: ${version}
+description: Blocks first-time players; only returning players may join.
 api-version: 1.14
 author: shikendon
 
-main: github.phateio.preloginevent.PreLoginEvent
+main: io.github.phateio.preloginevent.PreLoginEvent
