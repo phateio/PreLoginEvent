@@ -1,6 +1,7 @@
 package io.github.phateio.preloginevent;
 
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -16,7 +17,10 @@ public final class PreLoginEvent extends JavaPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
-        getServer().getPluginManager().registerEvents(new PreLoginListener(this), this);
+
+        PluginManager pluginManager = getServer().getPluginManager();
+        pluginManager.registerEvents(new PreLoginListener(this), this);
+        pluginManager.registerEvents(new ConnectionLogListener(this), this);
     }
 
     /**

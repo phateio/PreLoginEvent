@@ -7,6 +7,10 @@ player already has data on this server. Players who have never joined
 before are denied with a configurable kick message, so the existing
 player base stays closed to newcomers.
 
+On successful login it also logs the address each player used to reach
+the server (the virtual host from the handshake), e.g.
+`example.com:25565` or `203.0.113.5:25565`.
+
 ## Configuration
 
 `config.yml`:
