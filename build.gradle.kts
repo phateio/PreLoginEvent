@@ -16,13 +16,10 @@ repositories {
     // spigot-api 1.15.1 transitively depends on net.md-5:bungeecord-chat:1.15-SNAPSHOT,
     // which is no longer hosted on the spigotmc nexus. Scarsz mirrors it.
     maven("https://nexus.scarsz.me/content/groups/public/")
-    maven("https://repo.janmm14.de/repository/public/")
 }
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.15.1-R0.1-SNAPSHOT")
-    // Carried over from the original pom.xml; not referenced by the current source.
-    compileOnly("de.janmm14:aac-api:4.2.0")
 }
 
 tasks.withType<JavaCompile>().configureEach {
