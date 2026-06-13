@@ -1,0 +1,6 @@
+name: ${name}
+version: ${version}
+api-version: 1.14
+author: shikendon
+
+main: github.phateio.preloginevent.PreLoginEvent
