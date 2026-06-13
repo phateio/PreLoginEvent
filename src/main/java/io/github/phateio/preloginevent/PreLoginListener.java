@@ -19,6 +19,9 @@ final class PreLoginListener implements Listener {
 
     @EventHandler
     public void onAsyncPlayerPreLogin(AsyncPlayerPreLoginEvent event) {
+        if (!plugin.isKickEnabled()) {
+            return;
+        }
         OfflinePlayer player = Bukkit.getOfflinePlayer(event.getUniqueId());
         if (!player.hasPlayedBefore()) {
             event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST, plugin.getKickMessage());

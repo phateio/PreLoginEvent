@@ -2,10 +2,11 @@
 
 A Spigot plugin that whitelists the server to returning players only.
 
-During the asynchronous pre-login phase it checks whether the connecting
-player already has data on this server. Players who have never joined
-before are denied with a configurable kick message, so the existing
-player base stays closed to newcomers.
+When enabled, it checks during the asynchronous pre-login phase whether
+the connecting player already has data on this server, and denies anyone
+who has never joined before with a configurable kick message — keeping
+the player base closed to newcomers. This enforcement is opt-in and off
+by default (see `kick-enabled`).
 
 On successful login it also logs the address each player used to reach
 the server (the virtual host from the handshake), e.g.
@@ -15,9 +16,10 @@ the server (the virtual host from the handshake), e.g.
 
 `config.yml`:
 
-| Key | Description |
-|---|---|
-| `kick-message` | Message shown to first-time players. Supports `&` colour codes; use `\n` for line breaks. |
+| Key | Default | Description |
+|---|---|---|
+| `kick-enabled` | `false` | Whether to kick players who have never joined before. When `false`, no one is kicked. |
+| `kick-message` | — | Message shown to kicked first-time players. Supports `&` colour codes; use `\n` for line breaks. |
 
 ## Build
 

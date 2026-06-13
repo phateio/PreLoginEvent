@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public final class PreLoginEvent extends JavaPlugin {
 
+    private static final String KICK_ENABLED_KEY = "kick-enabled";
     private static final String KICK_MESSAGE_KEY = "kick-message";
     private static final String DEFAULT_KICK_MESSAGE =
             "This server is open to returning players only.";
@@ -21,6 +22,13 @@ public final class PreLoginEvent extends JavaPlugin {
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new PreLoginListener(this), this);
         pluginManager.registerEvents(new ConnectionLogListener(this), this);
+    }
+
+    /**
+     * Whether first-time players should be kicked. Defaults to {@code false}.
+     */
+    boolean isKickEnabled() {
+        return getConfig().getBoolean(KICK_ENABLED_KEY, false);
     }
 
     /**

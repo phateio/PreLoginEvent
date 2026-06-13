@@ -1,3 +1,7 @@
+# Whether to kick players who have never joined this server before.
+# When false (the default), no one is kicked.
+kick-enabled: false
+
 # Message shown to players who have never joined this server before.
 # Supports '&' colour codes; use '\n' for line breaks.
 kick-message: "This server is open to returning players only."
