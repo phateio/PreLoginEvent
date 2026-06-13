@@ -21,7 +21,7 @@ public class PreLoginEvent extends JavaPlugin {
 				final OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(playerName);
 				final String reason = "This is a test server for who played example.com only";
 
-				if (!offlinePlayer.hasPlayedBefore​()) {
+				if (!offlinePlayer.hasPlayedBefore()) {
 					event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST, reason);
 				}
 				
