@@ -22,8 +22,11 @@ public final class PreLoginEvent extends JavaPlugin {
     private static final String GEOIP_ASN_DB_KEY = "geoip-asn-db";
     private static final String DEFAULT_COUNTRY_DB = "/usr/share/GeoIP/GeoIP.dat";
     private static final String DEFAULT_ASN_DB = "/usr/share/GeoIP/GeoIPASNum.dat";
+    private static final String PING_LOG_FILE_KEY = "ping-log-file";
+    private static final String DEFAULT_PING_LOG = "logs/ping.log";
 
     private GeoIpLookup geoIp;
+    private PingLog pingLog;
 
     @Override
     public void onEnable() {
@@ -33,6 +36,12 @@ public final class PreLoginEvent extends JavaPlugin {
             geoIp = GeoIpLookup.open(
                     new File(getConfig().getString(GEOIP_COUNTRY_DB_KEY, DEFAULT_COUNTRY_DB)),
                     new File(getConfig().getString(GEOIP_ASN_DB_KEY, DEFAULT_ASN_DB)),
+                    getLogger());
+        }
+
+        if (isMotdLogEnabled()) {
+            pingLog = PingLog.open(
+                    new File(getConfig().getString(PING_LOG_FILE_KEY, DEFAULT_PING_LOG)),
                     getLogger());
         }
 
@@ -46,6 +55,10 @@ public final class PreLoginEvent extends JavaPlugin {
         if (geoIp != null) {
             geoIp.close();
             geoIp = null;
+        }
+        if (pingLog != null) {
+            pingLog.close();
+            pingLog = null;
         }
     }
 
@@ -68,6 +81,13 @@ public final class PreLoginEvent extends JavaPlugin {
      */
     GeoIpLookup getGeoIp() {
         return geoIp;
+    }
+
+    /**
+     * The ping log writer, or {@code null} when MOTD logging is disabled.
+     */
+    PingLog getPingLog() {
+        return pingLog;
     }
 
     /**

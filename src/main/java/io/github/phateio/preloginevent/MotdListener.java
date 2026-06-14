@@ -38,6 +38,9 @@ final class MotdListener implements Listener {
         if (geoIp != null) {
             line.append(" (").append(geoIp.describe(event.getAddress())).append(')');
         }
-        plugin.getLogger().info(line.toString());
+        PingLog pingLog = plugin.getPingLog();
+        if (pingLog != null) {
+            pingLog.info(line.toString());
+        }
     }
 }

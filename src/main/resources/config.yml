@@ -11,6 +11,10 @@ kick-message: "This server is open to returning players only."
 # so this can be noisy on public servers. Requires Paper.
 motd-log-enabled: true
 
+# File the ping log is written to (kept out of the console).
+# Truncated on each startup.
+ping-log-file: logs/ping.log
+
 # Enrich connection logs with GeoIP country + ASN, read from the legacy
 # MaxMind .dat databases below. Auto-disabled if the files are missing.
 geoip-enabled: true

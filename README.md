@@ -18,9 +18,11 @@ Steve connected via example.com:25565 from 203.0.113.5 (TW, AS3462 HINET)
 ```
 
 On Paper it additionally logs the virtual host of each MOTD / server-list
-ping. Note that the ping handshake carries the address the player typed
-directly (e.g. `example.com`), whereas login carries the SRV-resolved
-target — so the two logs can differ for the same player.
+ping to a separate file (`logs/ping.log`, truncated on each startup) so the
+noisy ping traffic stays out of the console. Note that the ping handshake
+carries the address the player typed directly (e.g. `example.com`), whereas
+login carries the SRV-resolved target — so the two logs can differ for the
+same player.
 
 ## Configuration
 
@@ -30,7 +32,8 @@ target — so the two logs can differ for the same player.
 |---|---|---|
 | `kick-enabled` | `false` | Whether to kick players who have never joined before. When `false`, no one is kicked. |
 | `kick-message` | — | Message shown to kicked first-time players. Supports `&` colour codes; use `\n` for line breaks. |
-| `motd-log-enabled` | `true` | Log the virtual host of each MOTD/server-list ping. Requires Paper; can be noisy on public servers. |
+| `motd-log-enabled` | `true` | Log the virtual host of each MOTD/server-list ping. Requires Paper. |
+| `ping-log-file` | `logs/ping.log` | File the ping log is written to (kept out of the console; truncated each startup). |
 | `geoip-enabled` | `true` | Append the source IP's country + ASN to connection and ping logs. Auto-disables if the `.dat` files are missing. |
 | `geoip-country-db` | `/usr/share/GeoIP/GeoIP.dat` | Path to the legacy MaxMind GeoIP country database. |
 | `geoip-asn-db` | `/usr/share/GeoIP/GeoIPASNum.dat` | Path to the legacy MaxMind GeoIP ASN database. |
