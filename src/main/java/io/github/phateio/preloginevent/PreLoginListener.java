@@ -7,7 +7,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 
 /**
- * Denies login to players who have never joined this server before.
+ * Logs each connection's virtual host and, when enabled, denies players
+ * who have never joined this server before.
  */
 final class PreLoginListener implements Listener {
 
@@ -19,6 +20,8 @@ final class PreLoginListener implements Listener {
 
     @EventHandler
     public void onAsyncPlayerPreLogin(AsyncPlayerPreLoginEvent event) {
+        plugin.getLogger().info(event.getName() + " connected via " + event.getHostname());
+
         if (!plugin.isKickEnabled()) {
             return;
         }

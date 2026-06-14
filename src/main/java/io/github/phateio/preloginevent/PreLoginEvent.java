@@ -22,7 +22,6 @@ public final class PreLoginEvent extends JavaPlugin {
 
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new PreLoginListener(this), this);
-        pluginManager.registerEvents(new ConnectionLogListener(this), this);
         pluginManager.registerEvents(new MotdListener(this), this);
     }
 

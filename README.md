@@ -8,9 +8,9 @@ who has never joined before with a configurable kick message — keeping
 the player base closed to newcomers. This enforcement is opt-in and off
 by default (see `kick-enabled`).
 
-On successful login it also logs the address each player used to reach
-the server (the virtual host from the handshake), e.g.
-`example.com:25565` or `203.0.113.5:25565`.
+It also logs the virtual host of every connection attempt (the address
+from the login handshake) during async pre-login, e.g. `example.com:25565`
+or `203.0.113.5:25565` — including attempts the whitelist rejects.
 
 On Paper it additionally logs the virtual host of each MOTD / server-list
 ping. Note that the ping handshake carries the address the player typed
@@ -29,8 +29,7 @@ target — so the two logs can differ for the same player.
 
 ## Build
 
-Runs on a Paper server (1.15+); the MOTD logging uses Paper's ping event.
-Building requires JDK 17+ (the Gradle toolchain compiles to Java 8 bytecode).
+Runs on a Paper server (1.21+). Building requires JDK 21.
 
 ```sh
 ./gradlew build
