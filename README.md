@@ -31,7 +31,7 @@ target — so the two logs can differ for the same player.
 | `kick-enabled` | `false` | Whether to kick players who have never joined before. When `false`, no one is kicked. |
 | `kick-message` | — | Message shown to kicked first-time players. Supports `&` colour codes; use `\n` for line breaks. |
 | `motd-log-enabled` | `true` | Log the virtual host of each MOTD/server-list ping. Requires Paper; can be noisy on public servers. |
-| `geoip-enabled` | `true` | Append the source IP's country + ASN to connection logs. Auto-disables if the `.dat` files are missing. |
+| `geoip-enabled` | `true` | Append the source IP's country + ASN to connection and ping logs. Auto-disables if the `.dat` files are missing. |
 | `geoip-country-db` | `/usr/share/GeoIP/GeoIP.dat` | Path to the legacy MaxMind GeoIP country database. |
 | `geoip-asn-db` | `/usr/share/GeoIP/GeoIPASNum.dat` | Path to the legacy MaxMind GeoIP ASN database. |
 

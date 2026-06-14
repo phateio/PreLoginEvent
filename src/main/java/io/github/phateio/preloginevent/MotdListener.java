@@ -31,6 +31,13 @@ final class MotdListener implements Listener {
         String via = virtualHost == null
                 ? "unknown"
                 : virtualHost.getHostString() + ":" + virtualHost.getPort();
-        plugin.getLogger().info("ping from " + event.getAddress().getHostAddress() + " via " + via);
+        StringBuilder line = new StringBuilder()
+                .append("Ping from ").append(event.getAddress().getHostAddress())
+                .append(" via ").append(via);
+        GeoIpLookup geoIp = plugin.getGeoIp();
+        if (geoIp != null) {
+            line.append(" (").append(geoIp.describe(event.getAddress())).append(')');
+        }
+        plugin.getLogger().info(line.toString());
     }
 }
