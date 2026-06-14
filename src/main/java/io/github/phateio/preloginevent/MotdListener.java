@@ -8,7 +8,7 @@ import java.net.InetSocketAddress;
 
 /**
  * Logs the virtual host of each MOTD (server-list ping) request, e.g.
- * "ping from 203.0.113.5 via example.com:25565". Unlike login, the ping
+ * "Ping via example.com:25565 from 203.0.113.5". Unlike login, the ping
  * handshake carries the address the player typed, not the SRV-resolved target.
  *
  * <p>Relies on Paper's {@link PaperServerListPingEvent}; on plain Spigot the
@@ -32,8 +32,8 @@ final class MotdListener implements Listener {
                 ? "unknown"
                 : virtualHost.getHostString() + ":" + virtualHost.getPort();
         StringBuilder line = new StringBuilder()
-                .append("Ping from ").append(event.getAddress().getHostAddress())
-                .append(" via ").append(via);
+                .append("Ping via ").append(via)
+                .append(" from ").append(event.getAddress().getHostAddress());
         GeoIpLookup geoIp = plugin.getGeoIp();
         if (geoIp != null) {
             line.append(" (").append(geoIp.describe(event.getAddress())).append(')');
