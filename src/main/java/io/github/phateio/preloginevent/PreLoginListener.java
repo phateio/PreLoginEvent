@@ -20,7 +20,7 @@ final class PreLoginListener implements Listener {
 
     @EventHandler
     public void onAsyncPlayerPreLogin(AsyncPlayerPreLoginEvent event) {
-        plugin.getLogger().info(event.getName() + " connected via " + event.getHostname());
+        plugin.getLogger().info(formatConnection(event));
 
         if (!plugin.isKickEnabled()) {
             return;
@@ -29,5 +29,17 @@ final class PreLoginListener implements Listener {
         if (!player.hasPlayedBefore()) {
             event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST, plugin.getKickMessage());
         }
+    }
+
+    private String formatConnection(AsyncPlayerPreLoginEvent event) {
+        StringBuilder line = new StringBuilder()
+                .append(event.getName())
+                .append(" connected via ").append(event.getHostname())
+                .append(" from ").append(event.getAddress().getHostAddress());
+        GeoIpLookup geoIp = plugin.getGeoIp();
+        if (geoIp != null) {
+            line.append(" (").append(geoIp.describe(event.getAddress())).append(')');
+        }
+        return line.toString();
     }
 }

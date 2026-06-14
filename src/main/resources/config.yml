@@ -10,3 +10,9 @@ kick-message: "This server is open to returning players only."
 # Pings can be frequent (every client refresh, plus internet scanners),
 # so this can be noisy on public servers. Requires Paper.
 motd-log-enabled: true
+
+# Enrich connection logs with GeoIP country + ASN, read from the legacy
+# MaxMind .dat databases below. Auto-disabled if the files are missing.
+geoip-enabled: true
+geoip-country-db: /usr/share/GeoIP/GeoIP.dat
+geoip-asn-db: /usr/share/GeoIP/GeoIPASNum.dat
