@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "io.github.phateio"
-version = "1.2"
+version = "1.3"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
