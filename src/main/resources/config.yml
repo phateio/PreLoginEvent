@@ -5,3 +5,8 @@ kick-enabled: false
 # Message shown to players who have never joined this server before.
 # Supports '&' colour codes; use '\n' for line breaks.
 kick-message: "This server is open to returning players only."
+
+# Log the virtual host of each MOTD / server-list ping request.
+# Pings can be frequent (every client refresh, plus internet scanners),
+# so this can be noisy on public servers. Requires Paper.
+motd-log-enabled: true
